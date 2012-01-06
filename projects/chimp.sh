@@ -9,6 +9,11 @@ alias ct="chimp-test"
 
 source "$HOME/.rvm/scripts/rvm"
 
+cco() {
+  git checkout $1
+  chimp
+}
+
 mkdb() { 
   mysql -uroot -proot -e "create database $1 character set utf8 collate utf8_general_ci"
 }

@@ -1,5 +1,6 @@
 alias git-branch-name='git name-rev --name-only HEAD'
 alias ga='git add'
+alias gf='git fetch'
 alias gp='git pull origin `git-branch-name`'
 alias gpr='git pull --rebase origin `git-branch-name`'
 alias gl='git-log'
