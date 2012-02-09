@@ -3,7 +3,7 @@ alias chimp-server='chimp && ./script/rails server'
 alias chimp-console='chimp && ./script/rails console'
 alias chimp-deploy-dev='rake dev vlad:deploy'
 alias chimp-make-tags='make-tags app test config lib'
-alias chimp-init='chimp && mysql.server start && rake ts:start && chimp-server'
+alias chimp-init='chimp && mysql.server start && rake ts:start'
 alias chimp-reset-all='rake db:migrate VERSION=0 && rake development:reset_all'
 alias ct="chimp-test"
 
