@@ -17,7 +17,7 @@ alias gcl='git clone'
 alias gsp='git stash && gpr && git stash apply'
 
 git-log() { 
-  git log --graph --pretty=format:'%an: %s - %Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 
+  git log --graph --pretty=format:'%an: %s - %Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $1
 }
 
 git-delete-remote-tag() {

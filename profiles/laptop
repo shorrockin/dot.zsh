@@ -3,4 +3,3 @@ source ~/.zsh/osx.sh
 source ~/.zsh/projects/chimp.sh
 source ~/.zsh/projects/jetsky.sh
 source ~/.zsh/etc/socks.sh
-

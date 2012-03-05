@@ -3,5 +3,5 @@
 # -----------------------------------------------
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="terminalparty"
-plugins=(git osx ruby rails3 npm rvm github brew node)
+plugins=(git ruby npm github brew node)
 source $ZSH/oh-my-zsh.sh

@@ -6,8 +6,9 @@ alias chimp-make-tags='make-tags app test config lib'
 alias chimp-init='chimp && mysql.server start && rake ts:start'
 alias chimp-reset-all='rake db:migrate VERSION=0 && rake development:reset_all'
 alias ct="chimp-test"
+alias chimp-sync-avatars='rsync -ave ssh deploy@prod:/home/deploy/chimp/shared/system/ /Users/chrisshorrock/Work/chimp/public/system/'
 
-source "$HOME/.rvm/scripts/rvm"
+source /Users/chrisshorrock/.rvm/scripts/rvm
 
 cco() {
   git checkout $1
