@@ -1,5 +1,5 @@
 alias chimp='cd ~ && cd ~/Work/chimp'
-alias chimp-server='chimp && ./script/rails server'
+alias chimp-server='chimp && rails server thin'
 alias chimp-console='chimp && ./script/rails console'
 alias chimp-deploy-dev='rake dev vlad:deploy'
 alias chimp-make-tags='make-tags app test config lib'

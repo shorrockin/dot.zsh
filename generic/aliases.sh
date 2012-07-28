@@ -18,10 +18,6 @@ gsub() {
  ack -l ${1} | xargs sed -i '' "s/${1}/${2}/g"
 }
 
-pgrep() {
-  ps aux | grep ${1}
-}
-
 lines() {
   more ${1} | nl -ba
 }

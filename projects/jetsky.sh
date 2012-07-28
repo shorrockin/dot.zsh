@@ -10,4 +10,4 @@ make-coffee-tags() {
   ctags -a -e -f TAGS --tag-relative -R --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*->.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" $@
 }
 
-ulimit -n 5000
+ulimit -n 10000
