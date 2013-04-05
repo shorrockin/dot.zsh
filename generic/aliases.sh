@@ -26,5 +26,9 @@ make-tags() {
   ctags -a -e -f TAGS --tag-relative -R $@
 }
 
+simple-server() {
+  python -m "SimpleHTTPServer"
+}
+
 
 

@@ -2,4 +2,8 @@ source ~/.zsh/generic.sh
 source ~/.zsh/osx.sh
 source ~/.zsh/projects/chimp.sh
 source ~/.zsh/projects/jetsky.sh
+source ~/.zsh/projects/dpadd.sh
 source ~/.zsh/etc/socks.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

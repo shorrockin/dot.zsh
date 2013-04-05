@@ -1,5 +1,5 @@
 alias chimp='cd ~ && cd ~/Work/chimp'
-alias chimp-server='chimp && rails server thin'
+alias chimp-server='chimp && rails server'
 alias chimp-console='chimp && ./script/rails console'
 alias chimp-deploy-dev='rake dev vlad:deploy'
 alias chimp-make-tags='make-tags app test config lib'
@@ -7,6 +7,8 @@ alias chimp-init='chimp && mysql.server start && rake ts:start'
 alias chimp-reset-all='rake db:migrate VERSION=0 && rake development:reset_all'
 alias ct="chimp-test"
 alias chimp-sync-avatars='rsync -ave ssh deploy@prod:/home/deploy/chimp/shared/system/ /Users/chrisshorrock/Work/chimp/public/system/'
+alias chimp-sync-avatars-to-disco='rsync -ave ssh /Users/chrisshorrock/Work/chimp/public/system/ deploy@disco:/home/deploy/chimp/shared/system/'
+alias browser-stack-chimp="java -jar ~/Work/BrowserStackTunnel.jar EcHY3oylYHVROEyPbpxr chimp.loc,3000,0"
 
 source /Users/chrisshorrock/.rvm/scripts/rvm
 
