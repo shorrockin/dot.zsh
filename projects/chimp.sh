@@ -34,7 +34,7 @@ ch() {
     mysql -uroot -proot -e "create database $2 character set utf8 collate utf8_general_ci"
   elif [[ $1 == 'browser-stack' ]]
   then
-    java -jar ~/Work/BrowserStackTunnel.jar EcHY3oylYHVROEyPbpxr chimp.loc,3000,0
+    java -jar ~/Work/BrowserStackTunnel.jar $BROWSER_STACK_KEY chimp.loc,3000,0
   elif [[ $# != 0 ]]
   then
     rake $@

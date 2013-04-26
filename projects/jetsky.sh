@@ -13,7 +13,7 @@ ab() {
     ./node_modules/.bin/coffee
   elif [[ $1 == 'browser-stack' ]]
   then
-    java -jar ~/Work/BrowserStackTunnel.jar EcHY3oylYHVROEyPbpxr atomicbrawl.loc,40000,0,game.atomicbrawl.loc,50000,0,asset.atomicbrawl.loc,10000,0
+    java -jar ~/Work/BrowserStackTunnel.jar $BROWSER_STACK_KEY atomicbrawl.loc,40000,0,game.atomicbrawl.loc,50000,0,asset.atomicbrawl.loc,10000,0
   elif [[ $1 == 'generate-art-descriptions' ]]
   then
     pie
