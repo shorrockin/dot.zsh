@@ -4,3 +4,7 @@ alias colored='ack --flush --passthru --color --color-match=blue "DEBUG" | ack -
 tail() { 
   /usr/bin/tail $@ | colored 
 }
+
+tabname() {
+  printf "\e]1;$1\a"
+}
