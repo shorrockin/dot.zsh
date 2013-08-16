@@ -44,6 +44,9 @@ ch() {
     mailcatcher
   elif [[ $1 == 'migrate' ]]; then
     rake db:migrate db:data:migrate
+  elif [[ ($1 == 'ack' || $1 == 'a' || $1 == 'find' || $1 == 'f') && $# -gt 1 ]]; then
+    shift
+    ack "$@" app/**/*.*
   elif [[ $# != 0 ]]; then
     rake $@
   fi
