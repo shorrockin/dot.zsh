@@ -13,6 +13,7 @@ alias gcl='git clone'
 alias g='git'
 alias gp='git pull'
 alias ts='tig status'
+alias git-amend='git commit --amend'
 
 git-branch-name() {
   git name-rev --name-only HEAD

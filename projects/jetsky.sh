@@ -33,6 +33,8 @@ ab() {
   elif [[ $1 == 'blog-deploy' ]]; then
     cd ~/Work/blog.atomicbrawl.com
     rake clean generate deploy
+  elif [[ $1 == 'tunnel' ]]; then
+    ssh app@atomicbrawl.com -L $AB_MONGO_PORT:$AB_MONGO_IP:$AB_MONGO_PORT -N
   elif [[ ($1 == 'ack' || $1 == 'a' || $1 == 'find' || $1 == 'f') && $# -gt 1 ]]; then
     shift
     ack "$@" src/**/*.*
