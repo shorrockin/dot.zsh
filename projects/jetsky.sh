@@ -34,10 +34,14 @@ ab() {
     cd ~/Work/blog.atomicbrawl.com
     rake clean generate deploy
   elif [[ $1 == 'tunnel' ]]; then
-    ssh app@atomicbrawl.com -L $AB_MONGO_PORT:$AB_MONGO_IP:$AB_MONGO_PORT -N
+    ssh app@meta1.atomicbrawl.com -L $AB_MONGO_PORT:$AB_MONGO_IP:$AB_MONGO_PORT -N
+  elif [[ $1 == 'logstash-tunnel' ]]; then
+    ssh app@admin.atomicbrawl.com -L 8000:127.0.0.1:8000 -L 9200:127.0.0.1:9200 -N
   elif [[ ($1 == 'ack' || $1 == 'a' || $1 == 'find' || $1 == 'f') && $# -gt 1 ]]; then
     shift
     ack "$@" src/**/*.*
+  elif [[ $1 == "test-servers" ]]; then
+    NODE_ENV=test pie servers
   elif [[ $# != 0 ]]; then
     pie $@
   fi 
