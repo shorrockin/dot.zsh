@@ -2,9 +2,9 @@ alias ga='git add'
 alias gf='git fetch'
 alias gl='git-log'
 alias gs='git status'
-alias gd='git diff'
-alias gm='git commit -m'
-alias gam='git add . && git add -u . && git commit -am'
+alias gd='git difftool'
+alias gm='git mergetool'
+alias gam='git add --all . && git add -u . && git commit -am'
 alias gb='git branch'
 alias gco='git checkout'
 alias gra='git remote add'
@@ -52,3 +52,5 @@ git-track() {
   git config branch.$CURRENT_BRANCH.remote $1
   git config branch.$CURRENT_BRANCH.merge refs/heads/$CURRENT_BRANCH
 }
+
+git config --global color.ui true

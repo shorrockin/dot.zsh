@@ -1,9 +1,15 @@
 ab() {
   cd ~/Work/atomicbrawl.com
-  tabname "brawl ($1)"
+
+  if [[ $# == 0 ]]; then
+    tabname "brawl"
+  else
+    tabname "brawl ($1)"
+  fi
 
   if [[ $1 == 'mongo' ]]; then
-    /usr/local/Cellar/mongodb/2.0.3-x86_64/bin/mongod
+    # /usr/local/Cellar/mongodb/2.0.3-x86_64/bin/mongod
+    mongod
   elif [[ $1 == 'logstash' ]]; then
     cd logstash
     ./start.sh
@@ -12,6 +18,8 @@ ab() {
   elif [[ $1 == 'coffee' ]]; then
     ./node_modules/.bin/coffee
   elif [[ $1 == 'repl' ]]; then
+    ./repl
+  elif [[ $1 == 'console' ]]; then
     ./repl
   elif [[ $1 == 'browser-stack' ]]; then
     java -jar ~/Work/browserstack.com/BrowserStackTunnel.jar $BROWSER_STACK_KEY atomicbrawl.loc,40000,0,game.atomicbrawl.loc,50000,0,asset.atomicbrawl.loc,10000,0
@@ -47,11 +55,6 @@ ab() {
   fi 
 }
 
-export NODE_ENV=development
-export NODE_APP_INSTANCE=chris
-
-source $HOME/.nvm/nvm.sh
-
 start-node-agent-game() {
   kill -SIGUSR2 `pgrep -f " game/server/start"`
 }
@@ -65,5 +68,4 @@ start-node-agent-test() {
 }
 
 ulimit -n 10000
-
 

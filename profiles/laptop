@@ -3,7 +3,14 @@ source ~/.zsh/osx.sh
 source ~/.zsh/projects/chimp.sh
 source ~/.zsh/projects/jetsky.sh
 source ~/.zsh/projects/dpadd.sh
+source ~/.zsh/projects/lmc.sh
 source ~/.zsh/etc/socks.sh
 
+alias gohome='cd $GOPATH'
+
 ### Added by the Heroku Toolbelt
+export GOPATH="/Users/chrisshorrock/Work/go.code"
+export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
+
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
