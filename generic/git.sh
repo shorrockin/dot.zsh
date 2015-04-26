@@ -16,7 +16,7 @@ alias ts='tig status'
 alias git-amend='git commit --amend'
 
 git-branch-name() {
-  git name-rev --name-only HEAD
+  git rev-parse --abbrev-ref HEAD
 }
 
 gpom() {
@@ -45,6 +45,11 @@ git-delete-remote-tag() {
 
 git-restore-to-head() {
   git cat-file -p HEAD:$1 > $1
+}
+
+git-branch() {
+  git checkout -b $1
+  git push --set-upstream origin $1
 }
 
 git-track() {
