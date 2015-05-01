@@ -7,3 +7,4 @@ source ~/.zsh/generic/environment.sh
 source ~/.zsh/generic/aliases.sh
 source ~/.zsh/generic/git.sh
 source ~/.zsh/generic/rust.sh
+source ~/.zsh/generic/docker.sh
