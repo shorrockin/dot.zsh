@@ -9,7 +9,7 @@ source ~/.zsh/etc/socks.sh
 alias gohome='cd $GOPATH'
 
 ### Added by the Heroku Toolbelt
-export GOPATH="/Users/chrisshorrock/Work/go.code"
+export GOPATH="/Users/chris/Work/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
