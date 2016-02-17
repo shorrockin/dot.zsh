@@ -2,7 +2,7 @@
 # Set up the prompt and plugins via oh-my-zsh
 # -----------------------------------------------
 ZSH=$HOME/.oh-my-zsh
-DEFAULT_USER=chrisshorrock
+DEFAULT_USER=chris
 ZSH_THEME="agnoster"
 DISABLE_AUTO_TITLE="true"
 

@@ -14,6 +14,7 @@ alias g='git'
 alias gp='git pull'
 alias ts='tig status'
 alias git-amend='git commit --amend'
+alias git-undo='git reset --soft HEAD^'
 
 git-branch-name() {
   git rev-parse --abbrev-ref HEAD
@@ -33,6 +34,14 @@ gpsh() {
 
 gsp() {
   git stash && gpr && git stash apply
+}
+
+git-merge-deploy-master-push() {
+    gco deploy
+    git merge master
+    gpsh
+    gco master
+    gpsh
 }
 
 git-log() { 
@@ -56,6 +65,24 @@ git-track() {
   CURRENT_BRANCH=$(git-branch-name)
   git config branch.$CURRENT_BRANCH.remote $1
   git config branch.$CURRENT_BRANCH.merge refs/heads/$CURRENT_BRANCH
+}
+
+git-emoji() {
+    echo "🎨 :art: when improving the format/structure of the code"
+    echo "🚀 :rocket: when improving performance"
+    echo "📝 :memo: when writing docs"
+    echo "💡 :bulb: new idea"
+    echo "🚧 :construction: work in progress"
+    echo "👍 :thumbsup: when adding feature"
+    echo "👎 :thumbsdown: when removing feature"
+    echo "🔈 :speaker: when adding logging"
+    echo "🔇 :mute: when reducing logging"
+    echo "🐛 :bug: when fixing a bug"
+    echo "✅ :white_check_mark: when adding tests"
+    echo "💚 :green_heart: fixing tests / continuous integration"
+    echo "🔒 :lock: when dealing with security"
+    echo "⬆️ :arrow_up: when adding / upgrading dependencies"
+    echo "⬇️ :arrow_down: when downgrading dependencies"
 }
 
 git config --global color.ui true

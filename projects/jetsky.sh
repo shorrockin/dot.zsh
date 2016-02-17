@@ -25,7 +25,7 @@ ab() {
     java -jar ~/Work/browserstack.com/BrowserStackTunnel.jar $BROWSER_STACK_KEY atomicbrawl.loc,40000,0,game.atomicbrawl.loc,50000,0,asset.atomicbrawl.loc,10000,0
   elif [[ $1 == 'generate-art-descriptions' ]]; then
     pie
-    pie --dir /Users/chrisshorrock/Dropbox/atomic_brawl/patswerk/cards art_descriptions
+    pie --dir /Users/chris/Dropbox/atomic_brawl/patswerk/cards art_descriptions
   elif [[ $1 == 'rename-card' ]]; then
     mv src/cards/$1.coffee src/cards/$2.coffee
     mv assets/images/cards/$1.png assets/images/cards/$2.png
