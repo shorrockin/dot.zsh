@@ -8,3 +8,14 @@ tail() {
 tabname() {
   printf "\e]1;$1\a"
 }
+
+flushcache() {
+    sudo dscacheutil -flushcache
+    sudo killall -HUP mDNSResponder
+    echo "DNS Cache Flushed"
+}
+
+flushping() {
+    flushcache
+    ping $1
+}
