@@ -26,6 +26,10 @@ dct() {
     docker-compose -f docker-composes.test.yml $@
 }
 
+docker-stats() {
+    docker stats $(docker ps --format '{{.Names}}')
+}
+
 alias dc='docker-compose'
 alias d='docker'
 alias dka='docker-kill-all'

@@ -30,5 +30,10 @@ simple-server() {
   python -m "SimpleHTTPServer"
 }
 
-
-
+go-test() {
+    go test $(go list ./...  | grep -v /vendor/)
+    for pkg in $(go list ./... |grep -v /vendor/)
+    do 
+        golint $pkg
+    done    
+}
