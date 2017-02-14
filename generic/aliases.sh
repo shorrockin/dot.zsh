@@ -31,9 +31,13 @@ simple-server() {
 }
 
 go-test() {
-    go test $(go list ./...  | grep -v /vendor/)
+    go test $@ $(go list ./...  | grep -v /vendor/)
     for pkg in $(go list ./... |grep -v /vendor/)
     do 
         golint $pkg
     done    
+}
+
+go-delete-test-files() {
+    find . -name "*.test" -type f -delete
 }

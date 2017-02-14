@@ -9,13 +9,18 @@ tabname() {
   printf "\e]1;$1\a"
 }
 
-flushcache() {
+flushdns() {
     sudo dscacheutil -flushcache
     sudo killall -HUP mDNSResponder
     echo "DNS Cache Flushed"
 }
 
 flushping() {
-    flushcache
+    flushdns
     ping $1
+}
+
+hostsset() {
+    sudo ln -sf $1 /etc/hosts
+    flushdns
 }
