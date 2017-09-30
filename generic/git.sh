@@ -28,7 +28,7 @@ gpr() {
   git pull --rebase origin $(git-branch-name)
 }
 
-gpsh() { 
+gpsh() {
   git push origin $(git-branch-name)
 }
 
@@ -44,7 +44,7 @@ git-merge-deploy-master-push() {
     gpsh
 }
 
-git-log() { 
+git-log() {
   git log --graph --pretty=format:'%an: %s - %Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $1
 }
 
@@ -59,6 +59,11 @@ git-restore-to-head() {
 git-branch() {
   git checkout -b $1
   git push --set-upstream origin $1
+}
+
+git-remember-password() {
+    git config credential.helper store
+    ssh-add ~/.ssh/id_rsa
 }
 
 git-track() {
