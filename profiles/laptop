@@ -5,6 +5,7 @@ source ~/.zsh/osx.sh
 # source ~/.zsh/projects/dpadd.sh
 # source ~/.zsh/projects/lmc.sh
 source ~/.zsh/etc/socks.sh
+source ~/.bash_profile
 
 alias gohome='cd $GOPATH'
 

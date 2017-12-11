@@ -22,8 +22,12 @@ lines() {
   more ${1} | nl -ba
 }
 
-make-tags() {
+tags-generate() {
   ctags -a -e -f TAGS --tag-relative -R $@
+}
+
+tags-ruby-generate() {
+  find . -name "*.rb" -print | etags -
 }
 
 simple-server() {
@@ -33,9 +37,9 @@ simple-server() {
 go-test() {
     go test $@ $(go list ./...  | grep -v /vendor/)
     for pkg in $(go list ./... |grep -v /vendor/)
-    do 
+    do
         golint $pkg
-    done    
+    done
 }
 
 go-delete-test-files() {
