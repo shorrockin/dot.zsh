@@ -1,14 +1,13 @@
 ## Command Aliases
-alias x=exit
-alias c=clear
-alias s=screen
-alias r='screen -R'
-alias vi='vim'
+alias vim='nvim -p'
+alias vi='nvim -p'
 alias l='ls -lFh'     #size,show type,human readable
 alias ll='ls -lFha'
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias e='emacs'
+alias cat='bat'
+alias more='bat'
 alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -22,12 +21,16 @@ lines() {
   more ${1} | nl -ba
 }
 
+export RIPPER_TAGS_EMACS=1
 tags-generate() {
   ctags -a -e -f TAGS --tag-relative -R $@
 }
 
 tags-ruby-generate() {
   find . -name "*.rb" -print | etags -
+}
+tags-ruby-regenerate() {
+  ripper-tags -R -f TAGS
 }
 
 simple-server() {
