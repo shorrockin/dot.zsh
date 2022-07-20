@@ -48,3 +48,11 @@ go-test() {
 go-delete-test-files() {
     find . -name "*.test" -type f -delete
 }
+
+to-big-emoji() {
+    if (( $# == 0 )) ; then
+      sed -E "s/([A-Z'a-z])/:big-\1:/g" < /dev/stdin
+    else
+      sed -E "s/([A-Z'a-z])/:big-\1:/g" <<< "$@"
+    fi
+}
