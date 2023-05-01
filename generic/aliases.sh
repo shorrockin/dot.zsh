@@ -13,7 +13,8 @@ alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
-
+alias slack-format="pbpaste | ~/.zsh/scripts/slack-thread-format | pbcopy"
+ 
 gsub() {
  ack -l ${1} | xargs sed -i '' "s/${1}/${2}/g"
 }
