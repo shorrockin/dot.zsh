@@ -16,7 +16,6 @@ alias gd='git diff'
 # alias glb='git-log-branch'
 # alias git-amend='git commit --amend'
 # alias git-undo='git reset --soft HEAD^'
-alias ts='tig status'
 alias g='git'
 alias pre-commit=".git/hooks/pre-commit"
 

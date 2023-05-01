@@ -1,3 +1,11 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source ~/.bash_profile
 source ~/.zsh/generic.sh
 source ~/.zsh/osx.sh
 # source ~/.zsh/projects/chimp.sh
@@ -5,20 +13,20 @@ source ~/.zsh/osx.sh
 # source ~/.zsh/projects/dpadd.sh
 # source ~/.zsh/projects/lmc.sh
 source ~/.zsh/etc/socks.sh
-source ~/.bash_profile
-
-alias gohome='cd $GOPATH'
-
-### Added by the Heroku Toolbelt
-export GOPATH="/Users/chris/Work/go"
-export PATH="$PATH:$GOPATH/bin"
-export GO15VENDOREXPERIMENT=1
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
-export PATH="$HOME/.yarn/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.yarn/bin:$PATH"
+# eval "$(rbenv init -)"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -C /Users/cs/stripe/space-commander/bin/commands/sc-complete sc
-complete -C /Users/cs/stripe/space-commander/bin/commands/sc-complete _sc
+autoload -Uz compinit
+compinit
+# complete -C /Users/cs/stripe/space-commander/bin/commands/sc-complete sc
+# complete -C /Users/cs/stripe/space-commander/bin/commands/sc-complete _sc
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# set's up fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

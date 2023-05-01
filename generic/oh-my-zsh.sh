@@ -3,7 +3,7 @@
 # -----------------------------------------------
 ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER=chris
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_AUTO_TITLE="true"
 
 source $ZSH/oh-my-zsh.sh

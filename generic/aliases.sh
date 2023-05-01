@@ -5,6 +5,7 @@ alias l='ls -lFh'     #size,show type,human readable
 alias ll='ls -lFha'
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ts='tmux-sessionizer'
 alias e='emacs'
 alias cat='bat'
 alias more='bat'
