@@ -14,6 +14,18 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias slack-format="pbpaste | ~/.zsh/scripts/slack-thread-format | pbcopy"
+
+h() {
+    local selected_command="$(history | awk '{$1=""; gsub(/\\n/, " ", $0); $0=$0; if (!seen[$0]++) print}' | fzf --no-sort --tac --exact)" 
+    if [ -n "$selected_command" ]; then  
+        print -s -- "$selected_command"  
+        eval "$selected_command"  
+    fi  
+}
+
+hc() {
+    history | awk '{$1=""; gsub(/\\n/, " ", $0); $0=$0; if (!seen[$0]++) print}' | fzf --no-sort --tac --exact | pbcopy
+}
  
 gsub() {
  ack -l ${1} | xargs sed -i '' "s/${1}/${2}/g"
@@ -57,4 +69,8 @@ to-big-emoji() {
     else
       sed -E "s/([A-Z'a-z])/:big-\1:/g" <<< "$@"
     fi
+}
+
+list-sleep-events() {
+  pmset -g log | grep "Wake Requests" | tail -n 20
 }

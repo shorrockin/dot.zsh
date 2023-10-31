@@ -19,78 +19,78 @@ alias gd='git diff'
 alias g='git'
 alias pre-commit=".git/hooks/pre-commit"
 
-git-branch-name() {
+function git-branch-name {
   git rev-parse --abbrev-ref HEAD
 }
 
-gpom() {
+function gpom {
   git pull origin $(git-branch-name)
 }
 
-gpr() {
+function gpr {
   git pull --rebase origin $(git-branch-name)
 }
 
-gpsh() {
+function gpsh {
   git push origin $(git-branch-name)
 }
 
-gpshf() {
+function gpshf {
   git push origin $(git-branch-name) --force
 }
 
-gsp() {
-  git stash && gpr && git stash apply
+gsp() function {
+  git stash && git pull --rebase origin $(git-branch-name) && git stash apply
 }
 
-git-merge-deploy-master-push() {
-    gco deploy
+function git-merge-deploy-master-push {
+    g co deploy
     git merge master
     gpsh
-    gco master
+    g co master
     gpsh
 }
 
-git-log() {
+function git-log {
   git log --graph --pretty=format:'%an: %s - %Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $1
 }
 
-git-delete-remote-tag() {
+function git-delete-remote-tag {
   git push origin :refs/tags/$0
 }
 
-git-restore-to-head() {
+function git-restore-to-head {
   git cat-file -p HEAD:$1 > $1
 }
 
-git-branch() {
+function git-branch {
   git checkout -b $1
   git push --set-upstream origin $1
 }
 
-git-branch-other() {
+function git-branch-other {
     git fetch origin +$1:$1
-    gco $1
+    g co $1
 }
 
-git-remember-password() {
+function git-remember-password {
     git config credential.helper store
     ssh-add ~/.ssh/id_rsa
 }
 
-git-track() {
+function git-track {
   CURRENT_BRANCH=$(git-branch-name)
   git config branch.$CURRENT_BRANCH.remote $1
   git config branch.$CURRENT_BRANCH.merge refs/heads/$CURRENT_BRANCH
 }
 
-git-fix() {
+function git-fix {
   AUTOSQUASH_AT=$(git log --format=format:%H $1^1 -1)
   git add --all . && git add -u . && git commit -a --no-verify --fixup $1 
   git rebase -i --autosquash $AUTOSQUASH_AT
 }
 
-git-fix-file() {
+function git-fix-file {
   AUTOSQUASH_AT=$(git log --format=format:%H $1^1 -1)
   git add $2 && git commit --no-verify --fixup $1
   git stash 
@@ -98,7 +98,7 @@ git-fix-file() {
   git stash apply
 }
 
-git-clean() {
+function git-clean {
     CURRENT_BRANCH=$(git-branch-name)
 
     # Make sure we're working with the most up-to-date version of master.
@@ -126,11 +126,11 @@ git-clean() {
     git checkout $CURRENT_BRANCH
 }
 
-git-log-branch() {
+function git-log-branch {
   git log --reverse --pretty=format:'%an: %s - %Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $(git-branch-name)...master-passing-tests $1
 }
 
-git-emoji() {
+function git-emoji {
     echo "🎨 :art: when improving the format/structure of the code"
     echo "🚀 :rocket: when improving performance"
     echo "📝 :memo: when writing docs"
