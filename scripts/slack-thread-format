@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-# https://github.com/dbalatero/dotfiles/blob/bd2cd904e1edbc9c0785a9030fe8b536c6a149c1/bin/slack-thread-format
+# Original: https://github.com/dbalatero/dotfiles/blob/bd2cd904e1edbc9c0785a9030fe8b536c6a149c1/bin/slack-thread-format
+# Adjusted to omit reactions, attachments, and timestamps by default.
 
 require 'pp'
 
@@ -86,17 +87,25 @@ class Message
   end
   # rubocop:enable
 
-  def to_formatted
-    lines = ["@#{username} | #{@timestamp}"]
+  def to_formatted(show_timestamp: true, show_attachment: true, show_reactions: true)
+    lines = if show_timestamp 
+      ["@#{username} | #{@timestamp}"]
+    else
+      ["@#{username}"]
+    end
     lines << @message unless @message.empty?
 
-    lines << '' if !@attachments.empty? || !@reactions.empty?
-
-    @attachments.each do |attachment|
-      lines << "(Attached #{attachment})"
+    if (show_attachment && !@attachments.empty?) || (show_reactions && !@reactions.empty?)
+      lines << '' 
     end
 
-    unless @reactions.empty?
+    if show_attachment
+      @attachments.each do |attachment|
+        lines << "(Attached #{attachment})"
+      end
+    end
+
+    if show_reactions && !@reactions.empty?
       reactions = []
 
       @reactions.each do |name, count|
@@ -112,5 +121,5 @@ end
 
 puts raw_messages
   .map { |raw| Message.new(raw) }
-  .map(&:to_formatted)
+  .map { |msg| msg.to_formatted(show_timestamp: false, show_attachment: false, show_reactions: false) }
   .join("\n\n")

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Make sure they've provided an argument (minutes)
+if [ "$#" -ne 1 ]; then
+    echo "Please provide the time in minutes as an argument"
+    exit 1
+fi
+
+# Make sure the argument is a positive number
+if ! [[ $1 =~ ^[0-9]+$ ]]; then
+    echo "Time in minutes must be a positive number"
+    exit 1
+fi
+
+# Convert the minutes to seconds
+let "seconds=$1*60"
+
+# Call the caffeinate command with the calculated seconds
+echo "Staying awake for $1 minutes ($seconds seconds)"
+/usr/bin/caffeinate -idu -t $seconds
