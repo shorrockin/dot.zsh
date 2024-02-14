@@ -1,20 +1,41 @@
 #!/bin/bash
 
-# Make sure they've provided an argument (minutes)
+# Validate Time Input
 if [ "$#" -ne 1 ]; then
     echo "Please provide the time in minutes as an argument"
     exit 1
 fi
-
-# Make sure the argument is a positive number
 if ! [[ $1 =~ ^[0-9]+$ ]]; then
     echo "Time in minutes must be a positive number"
     exit 1
 fi
 
 # Convert the minutes to seconds
-let "seconds=$1*60"
+let "total_seconds=$1*60"
+let "total_hours=$1/60"
 
-# Call the caffeinate command with the calculated seconds
-echo "Staying awake for $1 minutes ($seconds seconds)"
-/usr/bin/caffeinate -idu -t $seconds
+echo "Staying awake for $1 minutes ($total_seconds seconds, $total_hours hours)"
+
+# Loop until total_seconds become 0
+while [ $total_seconds -gt 0 ]; do
+    if [ $total_seconds -lt 1800 ] 
+    then
+        sleep_time=$total_seconds
+    else
+        sleep_time=1800
+    fi
+
+    # Run the caffeinate command
+    /usr/bin/caffeinate -idu -t $sleep_time
+
+    # Calculate the remaining time
+    let "total_seconds=total_seconds-1800"
+    let "hours_remain=total_seconds/3600"
+    let "minutes_remain=(total_seconds%3600)/60"
+    let "seconds_remain=total_seconds%60"
+
+    # Print the remaining time
+    echo "Still sleeping, remaining time: $hours_remain hours $minutes_remain minutes and $seconds_remain seconds"
+done
+
+afplay /System/Library/Sounds/Purr.aiff
