@@ -9,19 +9,7 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 compinit
 
-source ~/.bash_profile
 source ~/.zsh/generic.sh
-source ~/.zsh/osx.sh
-# source ~/.zsh/projects/chimp.sh
-# source ~/.zsh/projects/jetsky.sh
-# source ~/.zsh/projects/dpadd.sh
-# source ~/.zsh/projects/lmc.sh
-source ~/.zsh/etc/socks.sh
-
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
-
-# export PATH="$HOME/.yarn/bin:$PATH"
-# eval "$(rbenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
